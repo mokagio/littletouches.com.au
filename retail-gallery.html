@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Touches | Retailers Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-family: 'Courier', monospace;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .download-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .image-wrapper:hover .download-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .download-btn:hover {
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        .card-description {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .card-description p {
+            margin-bottom: 8px;
+        }
+
+        .copy-btn {
+            display: inline-block;
+            margin-top: 12px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .copy-btn:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .copy-btn.copied {
+            color: #27ae60;
+        }
+
+        footer {
+            display: block;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Little Touches - Retailers Gallery</h1>
+        <div class="gallery">
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Male_teacher.png?v=1762927970" alt="Thank you for helping me grow- Tree" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Male_teacher.png?v=1762927970" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Thank you for helping me grow- Tree</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Thank_You_teacher_Floral_2.png?v=1762927727" alt="Thank you for helping me grow- Floral 2" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Thank_You_teacher_Floral_2.png?v=1762927727" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Thank you for helping me grow- Floral 2</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging.</p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Thank_You_Teacher_Floral_1.png?v=1762927603" alt="Thank you for helping me grow- Floral 1" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Thank_You_Teacher_Floral_1.png?v=1762927603" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Thank you for helping me grow- Floral 1</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging.</p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Jingle_Final.png?v=1762923987" alt="Christmas- Jingle all the way" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Jingle_Final.png?v=1762923987" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Jingle all the way</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Hanging_Bows_Final.png?v=1762923897" alt="Christmas- We Wish you a Merry Christmas" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Hanging_Bows_Final.png?v=1762923897" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- We Wish you a Merry Christmas</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bows_Final.png?v=1762923791" alt="Christmas- Its the best time of the year" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bows_Final.png?v=1762923791" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Its the best time of the year</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Tree_Final.png?v=1762923569" alt="Christmas- Rockin' around the Christmas Tree" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Tree_Final.png?v=1762923569" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Rockin' around the Christmas Tree</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_tree.png?v=1762923350" alt="Christmas- Squirrels decorating tree" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_tree.png?v=1762923350" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Squirrels decorating tree</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mice_presents.png?v=1762923145" alt="Christmas- Mouse wrapping gifts" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mice_presents.png?v=1762923145" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Mouse wrapping gifts</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_window.png?v=1762922819" alt="Christmas- Squirrels tree in the window" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_window.png?v=1762922819" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Squirrels tree in the window</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mice_stocking.png?v=1762922691" alt="Christmas- Mice hanging stocking" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mice_stocking.png?v=1762922691" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Christmas- Mice hanging stocking</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. </p>
+<p>Each Card comes with a natural Kraft envelope.</p>
+<p>Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock.  Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Flowers.png?v=1762913206" alt="All Occasions- Bunch of Blooms" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Flowers.png?v=1762913206" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">All Occasions- Bunch of Blooms</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging.</p>
+<p>Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Bloom_Patterns.png?v=1762913108" alt="All Occasions- Pink Pattern-Tulip" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Bloom_Patterns.png?v=1762913108" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">All Occasions- Pink Pattern-Tulip</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging.</p>
+<p>Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Bloom_Patterns_3.png?v=1762913028" alt="All Occasions- Bone Pattern-Rose" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Bloom_Patterns_3.png?v=1762913028" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">All Occasions- Bone Pattern-Rose</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging.</p>
+<p>Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Bloom_Patterns_2.png?v=1762912894" alt="All Occasions- Sage Pattern-Tulip" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Bloom_Patterns_2.png?v=1762912894" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">All Occasions- Sage Pattern-Tulip</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging.</p>
+<p>Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped Edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Party_scene_girl.png?v=1762911839" alt="Woodland Tea Party Birthday- Girl" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Party_scene_girl.png?v=1762911839" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Woodland Tea Party Birthday- Girl</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Party_scene_boy.png?v=1762911752" alt="Woodland Tea Party Birthday- Boy" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Party_scene_boy.png?v=1762911752" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Woodland Tea Party Birthday- Boy</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mice_triplets.png?v=1762910889" alt="Mice Triplets in Bed" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mice_triplets.png?v=1762910889" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Mice Triplets in Bed</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Twins_mice.png?v=1762910821" alt="Mice Twins on Rocking Chair with mum" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Twins_mice.png?v=1762910821" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Mice Twins on Rocking Chair with mum</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Boy_line.png?v=1762910264" alt="Welcome Baby Boy, Clothes Line" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Boy_line.png?v=1762910264" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Welcome Baby Boy, Clothes Line</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Girl_line.png?v=1762909190" alt="Welcome Baby Girl, Clothes Line" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Girl_line.png?v=1762909190" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Welcome Baby Girl, Clothes Line</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/scallop-gingham.png?v=1762909091" alt="Welcome Baby Boys, Gingham bears- Scalloped card" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/scallop-gingham.png?v=1762909091" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Welcome Baby Boys, Gingham bears- Scalloped card</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/scallop_BG_gingham.png?v=1762908981" alt="Welcome Baby Girl, Gingham bows- Scalloped card" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/scallop_BG_gingham.png?v=1762908981" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Welcome Baby Girl, Gingham bows- Scalloped card</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Scalloped edging. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Fox_g_5.png?v=1762908097" alt="Happy Birthday Girl- Fox 5" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Fox_g_5.png?v=1762908097" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Girl- Fox 5</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunny_g_4.png?v=1762908026" alt="Happy Birthday Girl- Bunny 4" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunny_g_4.png?v=1762908026" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Girl- Bunny 4</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mouse_g_3.png?v=1762907928" alt="Happy Birthday Girl- Mouse 3" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mouse_g_3.png?v=1762907928" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Girl- Mouse 3</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bear_g_2.png?v=1762907762" alt="Happy Birthday Girl- Bear 2" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bear_g_2.png?v=1762907762" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Girl- Bear 2</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_g_1.png?v=1762907675" alt="Happy Birthday Girl- Squirrel 1" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_g_1.png?v=1762907675" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Girl- Squirrel 1</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Fox_b_5.png?v=1762907462" alt="Happy Birthday Boy- Fox 5" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Fox_b_5.png?v=1762907462" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Boy- Fox 5</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunny_b_4.png?v=1762907386" alt="Happy Birthday Boy- Bunny 4" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunny_b_4.png?v=1762907386" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Boy- Bunny 4</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mouse_b_3.png?v=1762907289" alt="Happy Birthday Boy- Mouse 3" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Mouse_b_3.png?v=1762907289" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Boy- Mouse 3</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bear_b_2.png?v=1762907199" alt="Happy Birthday Boy- Bear 2" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bear_b_2.png?v=1762907199" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Boy- Bear 2</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_b_1_2.png?v=1762907085" alt="Happy Birthday Boy- Squirrel 1" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Squirrel_b_1_2.png?v=1762907085" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Boy- Squirrel 1</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_5.png?v=1762906261" alt="Happy Birthday Pattern Girl- 5" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_5.png?v=1762906261" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Girl- 5</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_4.png?v=1762906194" alt="Happy Birthday Pattern Girl- 4" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_4.png?v=1762906194" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Girl- 4</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_3.png?v=1762905988" alt="Happy Birthday Pattern Girl- 3" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_3.png?v=1762905988" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Girl- 3</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_2.png?v=1762905894" alt="Happy Birthday Pattern Girl- 2" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_2.png?v=1762905894" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Girl- 2</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_1.png?v=1762905653" alt="Happy Birthday Pattern Girl- 1" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Girl_1.png?v=1762905653" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Girl- 1</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Boy_5.png?v=1762905040" alt="Happy Birthday Pattern Boy- 5" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Boy_5.png?v=1762905040" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Boy- 5</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Boy_4.png?v=1762904917" alt="Happy Birthday Pattern Boy- 4" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Boy_4.png?v=1762904917" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Boy- 4</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Boy_3.png?v=1762904827" alt="Happy Birthday Pattern Boy- 3" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-_Boy_3.png?v=1762904827" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Boy- 3</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-Boy2.png?v=1762904725" alt="Happy Birthday Pattern Boy- 2" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-Boy2.png?v=1762904725" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Boy- 2</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-Boy1.png?v=1762903986" alt="Happy Birthday Pattern Boy- 1" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/HB-Boy1.png?v=1762903986" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Happy Birthday Pattern Boy- 1</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. </p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock. Each Card comes with a natural Kraft envelope. Blank inside. 125 mm x 125 mm. ">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Dogcolourmefinal_1476.png?v=1756440961" alt="Dog and Daughter Star Gazing- Colour Me" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Dogcolourmefinal_1476.png?v=1756440961" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Dog and Daughter Star Gazing- Colour Me</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Dogfinal_1476.png?v=1756440876" alt="Dog and Daughter Star Gazing" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Dogfinal_1476.png?v=1756440876" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Dog and Daughter Star Gazing</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bearbuilderscolourme-1_1476.png?v=1756440487" alt="Bear and Son with Toolbelts- Colour Me" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bearbuilderscolourme-1_1476.png?v=1756440487" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Bear and Son with Toolbelts- Colour Me</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bearbuildersfinal-2_1476.png?v=1756440354" alt="Bear and Son with Toolbelts" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bearbuildersfinal-2_1476.png?v=1756440354" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Bear and Son with Toolbelts</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Micefinalcolourme_1476.png?v=1756434404" alt="Mouse and Son with Guitars- Colour Me" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Micefinalcolourme_1476.png?v=1756434404" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Mouse and Son with Guitars- Colour Me</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Micefinal-3_1476.png?v=1756434252" alt="Mouse and Son with Guitars" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Micefinal-3_1476.png?v=1756434252" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Mouse and Son with Guitars</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunnycolourme-1_1476.png?v=1756434135" alt="Bunny and daughter Splashing in the Rain- Colour Me" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunnycolourme-1_1476.png?v=1756434135" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Bunny and daughter Splashing in the Rain- Colour Me</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunnyfinal-2_1476.png?v=1756434028" alt="Bunny and daughter Splashing in the Rain" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bunnyfinal-2_1476.png?v=1756434028" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Bunny and daughter Splashing in the Rain</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bearcolourme-1_1476.png?v=1756432181" alt="Bear and Cub Fishing Adventure- Colour Me" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Bearcolourme-1_1476.png?v=1756432181" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Bear and Cub Fishing Adventure- Colour Me</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock, these black and white cards can be enjoyed as they are, or brought to life with your child's own colouring for a personal touch. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+<div class="card">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/bear-and-cub-fishing-adventure_2345e008-f5e1-4dc9-abfa-75c38cca3911.png?v=1756428272" alt="Bear and Cub Fishing Adventure" class="card-image">
+        <a href="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/bear-and-cub-fishing-adventure_2345e008-f5e1-4dc9-abfa-75c38cca3911.png?v=1756428272" download class="download-btn" target="_blank">Download</a>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">Bear and Cub Fishing Adventure</h2>
+        <div class="card-description">
+            <p>Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.</p>
+        </div>
+        <a href="#" class="copy-btn" data-text="Hand-illustrated, designed and printed by us on premium 270gsm textured cardstock for a beautiful pairing with the watercolour look. Each card comes with a natural kraft envelope. Blank inside. 125 mm x 125 mm.">Copy to clipboard</a>
+    </div>
+</div>
+        </div>
+        <footer>
+            Made with ♥ in Mount Martha<br />
+            <a href="https://littletouches.com.au">littletouches.com.au</a><br/>
+            © 2025
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyButtons = document.querySelectorAll('.copy-btn');
+
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const textToCopy = this.getAttribute('data-text');
+
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Store original text
+                        const originalText = this.textContent;
+
+                        // Update button to show success
+                        this.textContent = 'Copied!';
+                        this.classList.add('copied');
+
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy:', err);
+                        alert('Failed to copy to clipboard');
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
