@@ -32,13 +32,24 @@
         }
 
         p {
-            margin: 0.5rem 0;
+            margin: 0.7rem 0;
             font-size: 1.05rem;
+        }
+
+        .address {
+            margin-bottom: 1.4rem;
+        }
+
+        .address-divider {
+            width: 64px;
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin: 0.6rem auto 1.5rem;
         }
 
         .actions a {
             display: block;
-            margin: 1rem 0;
+            margin: 1.15rem 0;
             text-decoration: none;
             color: #444;
             font-size: 1.05rem;
@@ -47,6 +58,13 @@
 
         .actions a:hover {
             color: #000;
+        }
+
+        .action-divider {
+            width: 48px;
+            border: 0;
+            border-top: 1px solid #e3e3e3;
+            margin: 0.4rem auto;
         }
 
         footer {
@@ -67,13 +85,18 @@
     <main>
         <h1>Contact Little Touches</h1>
 
-        <p>PO Box 217</p>
-        <p>Mount Martha VIC 3934</p>
-        <p>Australia</p>
+        <div class="address">
+            <p>PO Box 217</p>
+            <p>Mount Martha VIC 3934</p>
+            <p>Australia</p>
+        </div>
+        <hr class="address-divider" />
 
         <div class="actions">
             <a href="mailto:hello@littletouches.com.au">hello@littletouches.com.au</a>
+            <hr class="action-divider" />
             <a href="https://instagram.com/little.touches.co" target="_blank" rel="noopener noreferrer">@little.touches.co</a>
+            <hr class="action-divider" />
             <a href="index.html">Back to Home</a>
         </div>
     </main>
