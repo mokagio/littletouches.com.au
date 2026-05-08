@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Touches | Wholesale Order</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2c3e50;
+            font-family: 'Courier', monospace;
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 32px;
+            font-size: 0.95em;
+        }
+
+        .customer-info {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .customer-info h2 {
+            font-family: 'Courier', monospace;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            font-size: 1.1em;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .field { display: flex; flex-direction: column; }
+        .field.full { grid-column: 1 / -1; }
+
+        .field label {
+            font-size: 0.85em;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .field label .required { color: #c0392b; }
+
+        .field input,
+        .field textarea {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95em;
+            background: #fafafa;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+        }
+
+        .field textarea { resize: vertical; min-height: 70px; }
+
+        .field input.invalid,
+        .field textarea.invalid { border-color: #c0392b; background: #fdf2f0; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .card.has-qty {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .image-wrapper { position: relative; overflow: hidden; }
+
+        .details-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95em;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transition: opacity 0.25s;
+            pointer-events: none;
+        }
+
+        .card:hover .details-btn { opacity: 1; }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content { padding: 16px 20px 20px; }
+
+        .card-title {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 14px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .card-meta .sku { font-family: 'Courier', monospace; font-size: 0.85em; }
+        .card-meta .price { font-weight: 600; color: #2c3e50; }
+
+        .qty-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .qty-btn {
+            flex: 0 0 40px;
+            border: none;
+            background: #f4f4f4;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #2c3e50;
+            transition: background 0.15s;
+        }
+
+        .qty-btn:hover { background: #e8e8e8; }
+        .qty-btn:active { background: #ddd; }
+
+        .qty-input {
+            flex: 1;
+            border: none;
+            text-align: center;
+            font-size: 1em;
+            font-family: inherit;
+            padding: 8px;
+            background: white;
+        }
+
+        .qty-input::-webkit-outer-spin-button,
+        .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .qty-input { -moz-appearance: textfield; }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
+        }
+
+        .btn-primary { background: #3498db; color: white; }
+        .btn-primary:hover { background: #2980b9; }
+        .btn-primary:active { transform: translateY(1px); }
+
+        .btn-secondary { background: #ecf0f1; color: #2c3e50; }
+        .btn-secondary:hover { background: #d5dbdc; }
+
+        .error {
+            text-align: center;
+            color: #c0392b;
+            margin-bottom: 16px;
+            font-size: 0.95em;
+            min-height: 1.4em;
+        }
+
+        .summary {
+            background: white;
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 32px;
+        }
+
+        .summary h2 {
+            font-family: 'Courier', monospace;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .summary-customer {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .summary-customer .label {
+            display: inline-block;
+            min-width: 90px;
+            color: #777;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+
+        .summary-table th,
+        .summary-table td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95em;
+        }
+
+        .summary-table th {
+            font-family: 'Courier', monospace;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .summary-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .summary-table .sku-cell { font-family: 'Courier', monospace; font-size: 0.9em; color: #555; }
+
+        .summary-total {
+            text-align: right;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+            padding-top: 8px;
+        }
+
+        .summary-notes {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+            white-space: pre-wrap;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        [hidden] { display: none !important; }
+
+        dialog#card-modal {
+            border: none;
+            border-radius: 12px;
+            padding: 0;
+            max-width: 520px;
+            width: 90vw;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+            inset: 0;
+            margin: auto;
+        }
+
+        dialog#card-modal::backdrop { background: rgba(0,0,0,0.4); }
+
+        .modal-image {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .modal-content { padding: 24px 28px 28px; }
+
+        .modal-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 14px;
+        }
+
+        .modal-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 22px;
+            color: #777;
+        }
+
+        .modal-meta .sku { font-family: 'Courier', monospace; font-size: 0.95em; }
+        .modal-meta .price { font-weight: 600; color: #2c3e50; font-size: 1.15em; }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.92);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3em;
+            line-height: 1;
+            color: #2c3e50;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .modal-close:hover { background: white; }
+
+        .modal-generate-btn { width: 100%; margin-top: 18px; }
+
+        @media (max-width: 768px) {
+            .gallery { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; color: #000; }
+            .customer-info,
+            .gallery,
+            .actions,
+            .error,
+            .intro,
+            footer { display: none !important; }
+            .summary {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+            .summary h2 { font-size: 1.4em; margin-bottom: 16px; }
+            .summary-table { page-break-inside: avoid; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Little Touches - Wholesale Order</h1>
+        <p class="intro">Set a quantity for each card you'd like to order, fill in your details, and generate your order.</p>
+
+        <section class="customer-info">
+            <h2>Your details</h2>
+            <div class="field-grid">
+                <div class="field">
+                    <label for="cust-name">Name <span class="required">*</span></label>
+                    <input type="text" id="cust-name" name="name" required>
+                </div>
+                <div class="field">
+                    <label for="cust-business">Business <span class="required">*</span></label>
+                    <input type="text" id="cust-business" name="business" required>
+                </div>
+                <div class="field">
+                    <label for="cust-email">Email <span class="required">*</span></label>
+                    <input type="email" id="cust-email" name="email" required>
+                </div>
+                <div class="field">
+                    <label for="cust-phone">Phone</label>
+                    <input type="tel" id="cust-phone" name="phone">
+                </div>
+                <div class="field full">
+                    <label for="cust-notes">Notes</label>
+                    <textarea id="cust-notes" name="notes" placeholder="Anything we should know?"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery" id="gallery">
+<div class="card" data-idx="0" data-sku="LT-BG-GINGBOWS" data-title="Baby Girl, Gingham bows- Scalloped card" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final-_Girl_Bow-Scollop_Cut_Then_Print.jpg?v=1778148923" alt="Baby Girl, Gingham bows- Scalloped card" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Baby Girl, Gingham bows- Scalloped card">Baby Girl, Gingham bows- Scalloped card</h2>
+        <div class="card-meta">
+            <span class="sku">LT-BG-GINGBOWS</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="1" data-sku="LT-BB-GINGBEARS" data-title="Baby Boys, Gingham bears- Scalloped card" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final-_Boy_Bear-Scollop_Cut_Then_Print__3.jpg?v=1778149008" alt="Baby Boys, Gingham bears- Scalloped card" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Baby Boys, Gingham bears- Scalloped card">Baby Boys, Gingham bears- Scalloped card</h2>
+        <div class="card-meta">
+            <span class="sku">LT-BB-GINGBEARS</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="2" data-sku="LT-UNI-GINGBEARS" data-title="Baby Unisex, Gingham bears- Scalloped card" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final-_Neutral_Bear-Scollop_cut_Then_Print.jpg?v=1778149074" alt="Baby Unisex, Gingham bears- Scalloped card" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Baby Unisex, Gingham bears- Scalloped card">Baby Unisex, Gingham bears- Scalloped card</h2>
+        <div class="card-meta">
+            <span class="sku">LT-UNI-GINGBEARS</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="3" data-sku="LT-BG-LINE1" data-title="Baby Girl, Clothes Line" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/SATURATION_TURNED_DOWN_50631f3c-9f2c-49c6-9003-a564f8040ae7.jpg?v=1778149392" alt="Baby Girl, Clothes Line" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Baby Girl, Clothes Line">Baby Girl, Clothes Line</h2>
+        <div class="card-meta">
+            <span class="sku">LT-BG-LINE1</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="4" data-sku="LT-BB-LINE1" data-title="Baby Boy, Clothes Line" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/SATURATION_TURNED_DOWN_d161aaef-be9a-4b54-95ac-27c8c1388691.jpg?v=1778149506" alt="Baby Boy, Clothes Line" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Baby Boy, Clothes Line">Baby Boy, Clothes Line</h2>
+        <div class="card-meta">
+            <span class="sku">LT-BB-LINE1</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="5" data-sku="LT-PINBB-ROUND" data-title="Bone Bear, Round Scollop" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Neutral_Bear_Round.jpg?v=1778149570" alt="Bone Bear, Round Scollop" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Bone Bear, Round Scollop">Bone Bear, Round Scollop</h2>
+        <div class="card-meta">
+            <span class="sku">LT-PINBB-ROUND</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="6" data-sku="LT-PINRH-ROUND" data-title="Rocking Horse, Round Scollop" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Newborn_Horse_Round.jpg?v=1778149663" alt="Rocking Horse, Round Scollop" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Rocking Horse, Round Scollop">Rocking Horse, Round Scollop</h2>
+        <div class="card-meta">
+            <span class="sku">LT-PINRH-ROUND</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="7" data-sku="LT-EUC-WLO" data-title="Eucalyptus Welcome Little One" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/WLO_Eucalyptus_Print_Then_Cut.jpg?v=1778149722" alt="Eucalyptus Welcome Little One" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Eucalyptus Welcome Little One">Eucalyptus Welcome Little One</h2>
+        <div class="card-meta">
+            <span class="sku">LT-EUC-WLO</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="8" data-sku="LT-ROSE-WLO" data-title="Rose Welcome Little One" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/WLO_Floral__Print_Then_Cut.jpg?v=1778149790" alt="Rose Welcome Little One" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Rose Welcome Little One">Rose Welcome Little One</h2>
+        <div class="card-meta">
+            <span class="sku">LT-ROSE-WLO</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="9" data-sku="LT-CIAO-G" data-title="Ciao Baby (girl)" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Ciao_Baby_3.jpg?v=1778149866" alt="Ciao Baby (girl)" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Ciao Baby (girl)">Ciao Baby (girl)</h2>
+        <div class="card-meta">
+            <span class="sku">LT-CIAO-G</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="10" data-sku="LT-CIAO-B" data-title="Ciao Baby (boy)" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Ciao_Baby.jpg?v=1778149968" alt="Ciao Baby (boy)" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Ciao Baby (boy)">Ciao Baby (boy)</h2>
+        <div class="card-meta">
+            <span class="sku">LT-CIAO-B</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="11" data-sku="LT-ARCH-G" data-title="Arch Baby Girl" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Arch_Boy___Girl.jpg?v=1778150029" alt="Arch Baby Girl" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Arch Baby Girl">Arch Baby Girl</h2>
+        <div class="card-meta">
+            <span class="sku">LT-ARCH-G</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="12" data-sku="LT-ARCH-B" data-title="Arch Baby Boy" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_Arch_Boy___Girl-6.jpg?v=1778150114" alt="Arch Baby Boy" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Arch Baby Boy">Arch Baby Boy</h2>
+        <div class="card-meta">
+            <span class="sku">LT-ARCH-B</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="13" data-sku="LT-STRAW-BG" data-title="Birthday Girl Strawberry Gingham Card" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Birthday_Girl_-_Strawberry_Gingham_Final.jpg?v=1778150194" alt="Birthday Girl Strawberry Gingham Card" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Birthday Girl Strawberry Gingham Card">Birthday Girl Strawberry Gingham Card</h2>
+        <div class="card-meta">
+            <span class="sku">LT-STRAW-BG</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="14" data-sku="LT-BOWS-BG" data-title="Birthday Girl Gingham Bows" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Girl_Birthday_-_Gingham_Bow_Final.jpg?v=1778150266" alt="Birthday Girl Gingham Bows" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Birthday Girl Gingham Bows">Birthday Girl Gingham Bows</h2>
+        <div class="card-meta">
+            <span class="sku">LT-BOWS-BG</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="15" data-sku="LT-PINBOWS-BG" data-title="Birthday Girl Pinstripped with Bows" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Birthday_Girl_-_Pinstripe_Bow_Final.jpg?v=1778150321" alt="Birthday Girl Pinstripped with Bows" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Birthday Girl Pinstripped with Bows">Birthday Girl Pinstripped with Bows</h2>
+        <div class="card-meta">
+            <span class="sku">LT-PINBOWS-BG</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="16" data-sku="LT-GING-BOWS" data-title="Birthday Wishes Gingham Flowers" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Birthday_Girl_-_Daisy_Gingham_Final.jpg?v=1778150383" alt="Birthday Wishes Gingham Flowers" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Birthday Wishes Gingham Flowers">Birthday Wishes Gingham Flowers</h2>
+        <div class="card-meta">
+            <span class="sku">LT-GING-BOWS</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="17" data-sku="LT-FLORAL-G01" data-title="Number 1 Floral" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_1___2_Girl.jpg?v=1778150485" alt="Number 1 Floral" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Number 1 Floral">Number 1 Floral</h2>
+        <div class="card-meta">
+            <span class="sku">LT-FLORAL-G01</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="18" data-sku="LT-HORSE-G02" data-title="Number 2 Rocking Horse" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Final_1___2_Girl_2.jpg?v=1778150579" alt="Number 2 Rocking Horse" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Number 2 Rocking Horse">Number 2 Rocking Horse</h2>
+        <div class="card-meta">
+            <span class="sku">LT-HORSE-G02</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="19" data-sku="LT-BEAR-B01" data-title="Number 1 Bears" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Finals_1___2_Boys_2.jpg?v=1778150644" alt="Number 1 Bears" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Number 1 Bears">Number 1 Bears</h2>
+        <div class="card-meta">
+            <span class="sku">LT-BEAR-B01</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" data-idx="20" data-sku="LT-CARS-B02" data-title="Number 2 Cars" data-price="8.0">
+    <div class="image-wrapper">
+        <img src="https://cdn.shopify.com/s/files/1/0774/3363/5071/files/Finals_1___2_Boys.jpg?v=1778150710" alt="Number 2 Cars" class="card-image">
+        <span class="details-btn">Details</span>
+    </div>
+    <div class="card-content">
+        <h2 class="card-title" title="Number 2 Cars">Number 2 Cars</h2>
+        <div class="card-meta">
+            <span class="sku">LT-CARS-B02</span>
+            <span class="price">$8.00</span>
+        </div>
+        <div class="qty-row">
+            <button type="button" class="qty-btn qty-decr" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="0" step="1" value="0" inputmode="numeric">
+            <button type="button" class="qty-btn qty-incr" aria-label="Increase quantity">+</button>
+        </div>
+    </div>
+</div>
+
+        </section>
+
+        <div class="error" id="error" role="alert"></div>
+
+        <div class="actions">
+            <button type="button" class="btn btn-primary" id="generate-btn">Generate order</button>
+        </div>
+
+        <section class="summary" id="summary" hidden>
+            <h2>Order summary</h2>
+            <div class="summary-customer" id="summary-customer"></div>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Item</th>
+                        <th class="num">Qty</th>
+                        <th class="num">Unit</th>
+                        <th class="num">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-items"></tbody>
+            </table>
+            <div class="summary-total" id="summary-total"></div>
+            <div class="summary-notes" id="summary-notes" hidden></div>
+            <div class="actions no-print" style="margin-top: 24px;">
+                <button type="button" class="btn btn-secondary" id="back-btn">Back to edit</button>
+                <button type="button" class="btn btn-secondary" id="print-btn">Print / Save as PDF</button>
+                <button type="button" class="btn btn-primary" id="email-btn" hidden>Email order</button>
+            </div>
+        </section>
+
+        <dialog id="card-modal" aria-labelledby="modal-title">
+            <button type="button" class="modal-close" id="modal-close" aria-label="Close">×</button>
+            <img class="modal-image" id="modal-image" src="" alt="">
+            <div class="modal-content">
+                <h3 class="modal-title" id="modal-title"></h3>
+                <div class="modal-meta">
+                    <span class="sku" id="modal-sku"></span>
+                    <span class="price" id="modal-price"></span>
+                </div>
+                <div class="qty-row">
+                    <button type="button" class="qty-btn" id="modal-qty-decr" aria-label="Decrease quantity">−</button>
+                    <input type="number" class="qty-input" id="modal-qty-input" min="0" step="1" value="0" inputmode="numeric">
+                    <button type="button" class="qty-btn" id="modal-qty-incr" aria-label="Increase quantity">+</button>
+                </div>
+                <button type="button" class="btn btn-primary modal-generate-btn" id="modal-generate-btn">Generate order</button>
+            </div>
+        </dialog>
+
+        <footer>
+            Made with ♥ in Mount Martha<br />
+            <a href="https://littletouches.com.au">littletouches.com.au</a><br/>
+            © 2025
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const HELLO = 'hello@littletouches.com.au';
+
+            const cards = Array.from(document.querySelectorAll('.card'));
+            const gallery = document.getElementById('gallery');
+            const customerSection = document.querySelector('.customer-info');
+            const intro = document.querySelector('.intro');
+            const mainActions = document.querySelector('.actions');
+            const summary = document.getElementById('summary');
+            const errorEl = document.getElementById('error');
+
+            const fields = {
+                name: document.getElementById('cust-name'),
+                business: document.getElementById('cust-business'),
+                email: document.getElementById('cust-email'),
+                phone: document.getElementById('cust-phone'),
+                notes: document.getElementById('cust-notes')
+            };
+
+            cards.forEach(card => {
+                const input = card.querySelector('.qty-input');
+                const decr = card.querySelector('.qty-decr');
+                const incr = card.querySelector('.qty-incr');
+
+                const sync = () => {
+                    const v = parseInt(input.value, 10);
+                    if (isNaN(v) || v < 0) input.value = 0;
+                    card.classList.toggle('has-qty', parseInt(input.value, 10) > 0);
+                };
+
+                decr.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    input.value = Math.max(0, (parseInt(input.value, 10) || 0) - 1);
+                    sync();
+                });
+                incr.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    input.value = (parseInt(input.value, 10) || 0) + 1;
+                    sync();
+                });
+                input.addEventListener('input', sync);
+                input.addEventListener('click', (e) => e.stopPropagation());
+
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.qty-row')) return;
+                    openCardModal(card);
+                });
+            });
+
+            const modal = document.getElementById('card-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalSku = document.getElementById('modal-sku');
+            const modalPrice = document.getElementById('modal-price');
+            const modalQtyInput = document.getElementById('modal-qty-input');
+            const modalQtyDecr = document.getElementById('modal-qty-decr');
+            const modalQtyIncr = document.getElementById('modal-qty-incr');
+            const modalClose = document.getElementById('modal-close');
+
+            let activeCardInput = null;
+
+            function openCardModal(card) {
+                activeCardInput = card.querySelector('.qty-input');
+                modalImage.src = card.querySelector('.card-image').src;
+                modalImage.alt = card.dataset.title;
+                modalTitle.textContent = card.dataset.title;
+                modalSku.textContent = card.dataset.sku;
+                modalPrice.textContent = '$' + parseFloat(card.dataset.price).toFixed(2);
+                modalQtyInput.value = activeCardInput.value;
+                modal.showModal();
+            }
+
+            function pushModalQtyToCard() {
+                if (!activeCardInput) return;
+                const v = Math.max(0, parseInt(modalQtyInput.value, 10) || 0);
+                modalQtyInput.value = v;
+                activeCardInput.value = v;
+                activeCardInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+
+            modalQtyDecr.addEventListener('click', () => {
+                modalQtyInput.value = Math.max(0, (parseInt(modalQtyInput.value, 10) || 0) - 1);
+                pushModalQtyToCard();
+            });
+            modalQtyIncr.addEventListener('click', () => {
+                modalQtyInput.value = (parseInt(modalQtyInput.value, 10) || 0) + 1;
+                pushModalQtyToCard();
+            });
+            modalQtyInput.addEventListener('input', pushModalQtyToCard);
+            modalClose.addEventListener('click', () => modal.close());
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.close();
+            });
+
+            document.getElementById('modal-generate-btn').addEventListener('click', () => {
+                modal.close();
+                document.getElementById('generate-btn').click();
+            });
+
+            function collectItems() {
+                return cards.map(card => {
+                    const qty = parseInt(card.querySelector('.qty-input').value, 10) || 0;
+                    return {
+                        sku: card.dataset.sku,
+                        title: card.dataset.title,
+                        price: parseFloat(card.dataset.price) || 0,
+                        qty: qty
+                    };
+                }).filter(it => it.qty > 0);
+            }
+
+            function setError(msg) { errorEl.textContent = msg || ''; }
+
+            function validateCustomer() {
+                let ok = true;
+                let firstInvalid = null;
+                ['name', 'business', 'email'].forEach(k => {
+                    const el = fields[k];
+                    const empty = !el.value.trim();
+                    const badEmail = k === 'email' && el.value.trim() && !/^\S+@\S+\.\S+$/.test(el.value.trim());
+                    if (empty || badEmail) {
+                        el.classList.add('invalid');
+                        if (!firstInvalid) firstInvalid = el;
+                        ok = false;
+                    } else {
+                        el.classList.remove('invalid');
+                    }
+                });
+                return { ok, firstInvalid };
+            }
+
+            function fmt(n) { return '$' + n.toFixed(2); }
+
+            function buildSummary(items) {
+                const customerEl = document.getElementById('summary-customer');
+                const tbody = document.getElementById('summary-items');
+                const totalEl = document.getElementById('summary-total');
+                const notesEl = document.getElementById('summary-notes');
+
+                const grand = items.reduce((s, it) => s + it.qty * it.price, 0);
+
+                customerEl.innerHTML =
+                    '<div><span class="label">Name:</span> ' + escapeHtml(fields.name.value) + '</div>' +
+                    '<div><span class="label">Business:</span> ' + escapeHtml(fields.business.value) + '</div>' +
+                    '<div><span class="label">Email:</span> ' + escapeHtml(fields.email.value) + '</div>' +
+                    (fields.phone.value.trim() ? '<div><span class="label">Phone:</span> ' + escapeHtml(fields.phone.value) + '</div>' : '');
+
+                tbody.innerHTML = items.map(it =>
+                    '<tr>' +
+                        '<td class="sku-cell">' + escapeHtml(it.sku) + '</td>' +
+                        '<td>' + escapeHtml(it.title) + '</td>' +
+                        '<td class="num">' + it.qty + '</td>' +
+                        '<td class="num">' + fmt(it.price) + '</td>' +
+                        '<td class="num">' + fmt(it.qty * it.price) + '</td>' +
+                    '</tr>'
+                ).join('');
+
+                totalEl.textContent = 'Total: ' + fmt(grand);
+
+                if (fields.notes.value.trim()) {
+                    notesEl.textContent = 'Notes: ' + fields.notes.value.trim();
+                    notesEl.hidden = false;
+                } else {
+                    notesEl.hidden = true;
+                }
+            }
+
+            function escapeHtml(s) {
+                return String(s).replace(/[&<>"']/g, c => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+                })[c]);
+            }
+
+            function buildEmailBody(items) {
+                const lines = [];
+                lines.push('Name:     ' + fields.name.value.trim());
+                lines.push('Business: ' + fields.business.value.trim());
+                lines.push('Email:    ' + fields.email.value.trim());
+                if (fields.phone.value.trim()) lines.push('Phone:    ' + fields.phone.value.trim());
+                lines.push('');
+                lines.push('Order:');
+                lines.push('');
+
+                const skuW = Math.max(3, ...items.map(it => it.sku.length));
+                const titleW = Math.min(40, Math.max(4, ...items.map(it => it.title.length)));
+                const pad = (s, w) => (s + ' '.repeat(w)).slice(0, w);
+
+                lines.push(pad('SKU', skuW) + '  ' + pad('Item', titleW) + '  Qty   Unit    Subtotal');
+                lines.push('-'.repeat(skuW + titleW + 26));
+
+                let grand = 0;
+                items.forEach(it => {
+                    const sub = it.qty * it.price;
+                    grand += sub;
+                    lines.push(
+                        pad(it.sku, skuW) + '  ' +
+                        pad(it.title, titleW) + '  ' +
+                        String(it.qty).padStart(3) + '   ' +
+                        ('$' + it.price.toFixed(2)).padStart(6) + '  ' +
+                        ('$' + sub.toFixed(2)).padStart(8)
+                    );
+                });
+
+                lines.push('');
+                lines.push('Total: $' + grand.toFixed(2));
+
+                if (fields.notes.value.trim()) {
+                    lines.push('');
+                    lines.push('Notes:');
+                    lines.push(fields.notes.value.trim());
+                }
+
+                return lines.join('\n');
+            }
+
+            document.getElementById('generate-btn').addEventListener('click', () => {
+                setError('');
+                const { ok, firstInvalid } = validateCustomer();
+                if (!ok) {
+                    setError('Please fill in your name, business, and a valid email.');
+                    if (firstInvalid) firstInvalid.focus();
+                    return;
+                }
+                const items = collectItems();
+                if (items.length === 0) {
+                    setError('Select at least one card before generating an order.');
+                    return;
+                }
+                buildSummary(items);
+                intro.hidden = true;
+                customerSection.hidden = true;
+                gallery.hidden = true;
+                mainActions.hidden = true;
+                summary.hidden = false;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            document.getElementById('back-btn').addEventListener('click', () => {
+                summary.hidden = true;
+                intro.hidden = false;
+                customerSection.hidden = false;
+                gallery.hidden = false;
+                mainActions.hidden = false;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            document.getElementById('print-btn').addEventListener('click', () => window.print());
+
+            document.getElementById('email-btn').addEventListener('click', () => {
+                const items = collectItems();
+                const subject = 'Wholesale order \u2014 ' + (fields.business.value.trim() || 'Little Touches');
+                const body = buildEmailBody(items);
+                const url = 'mailto:' + HELLO +
+                            '?subject=' + encodeURIComponent(subject) +
+                            '&body=' + encodeURIComponent(body);
+                window.location.href = url;
+            });
+        })();
+    </script>
+</body>
+</html>
